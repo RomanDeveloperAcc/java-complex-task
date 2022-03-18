@@ -16,22 +16,22 @@ import java.util.ArrayList;
  * 2. would be good to create interface and class based on it
  * 3. more constructors with extended functionality (fileName, dbService) ...
  */
-public class BufferedFileReader implements FileReaderService<String> {
+public class BufferedFileReaderService implements FileReaderService {
     private final String fileName;
     private final DBService dbService;
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
-    public BufferedFileReader() {
+    public BufferedFileReaderService() {
         this.fileName = "test.txt";
         this.dbService = new CountryDBService();
     }
 
-    public BufferedFileReader(String fileName) {
+    public BufferedFileReaderService(String fileName) {
         this.fileName = fileName;
         this.dbService = new CountryDBService();
     }
 
-    public BufferedFileReader(String fileName, DBService dbService) {
+    public BufferedFileReaderService(String fileName, DBService dbService) {
         this.fileName = fileName;
         this.dbService = dbService;
     }
@@ -56,8 +56,7 @@ public class BufferedFileReader implements FileReaderService<String> {
             }
             logger.info("Data was successfully read!");
         } catch (IOException e) {
-            logger.error("Error while reading data.");
-            e.printStackTrace();
+            logger.error("Error while reading data.", e);
         }
 
         return dataRows;

@@ -4,11 +4,11 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class BasicDataGeneratorTest {
+public class BasicDataGeneratorServiceTest {
 
     @Test
     public void generateInt() {
-        BasicDataGenerator basicDataGenerator = new BasicDataGenerator();
+        BasicDataGeneratorService basicDataGenerator = new BasicDataGeneratorService();
         int testValue = basicDataGenerator.generateInt();
 
         assertTrue(testValue <= 100 && testValue >= 0);
@@ -16,7 +16,7 @@ public class BasicDataGeneratorTest {
 
     @Test
     public void generateString() {
-        BasicDataGenerator basicDataGenerator = new BasicDataGenerator();
+        BasicDataGeneratorService basicDataGenerator = new BasicDataGeneratorService();
         String testValue = basicDataGenerator.generateString();
 
         assertEquals(testValue.length(), 10);
@@ -24,7 +24,7 @@ public class BasicDataGeneratorTest {
 
     @Test
     public void getCurrentDate() {
-        BasicDataGenerator basicDataGenerator = new BasicDataGenerator();
+        BasicDataGeneratorService basicDataGenerator = new BasicDataGeneratorService();
         String testValue = basicDataGenerator.getCurrentDate();
 
         assertNotNull(testValue);

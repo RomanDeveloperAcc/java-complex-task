@@ -23,7 +23,7 @@ public class CountryDBService implements DBService<Country> {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
-    public static final DateService dateGenerator = new BasicDataGenerator();
+    public static final DateService dateGenerator = new BasicDataGeneratorService();
 
     public void createTable() {
         try (Connection connection = DriverManager.getConnection(CONNECTION_STRING, DB_LOGIN, DB_PASSWORD);

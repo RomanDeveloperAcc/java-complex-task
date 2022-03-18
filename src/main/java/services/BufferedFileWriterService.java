@@ -2,15 +2,13 @@ package services;
 
 import interfaces.DataGeneratorService;
 import interfaces.FileWriterService;
-import models.Country;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.reflect.Field;
-import java.util.Map;
+import java.util.List;
 
 /**
  * Things to change:
@@ -19,23 +17,23 @@ import java.util.Map;
  * 3. separate generation logic from `writeData` method
  * 4. would be good to create interface and class based on it
  */
-public class BufferedFileWriter<T extends Map<String, Object>> implements FileWriterService<T> {
+public class BufferedFileWriterService<T> implements FileWriterService<T> {
     private final String fileName;
     private final DataGeneratorService dataGenerator;
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
 
-    public BufferedFileWriter() {
+    public BufferedFileWriterService() {
         this.fileName = "test.txt";
-        dataGenerator = new BasicDataGenerator();
+        dataGenerator = new BasicDataGeneratorService();
     }
 
-    public BufferedFileWriter(String fileName) {
+    public BufferedFileWriterService(String fileName) {
         this.fileName = fileName;
-        this.dataGenerator = new BasicDataGenerator();
+        this.dataGenerator = new BasicDataGeneratorService();
     }
 
-    public BufferedFileWriter(String fileName, BasicDataGenerator dataGenerator) {
+    public BufferedFileWriterService(String fileName, BasicDataGeneratorService dataGenerator) {
         this.fileName = fileName;
         this.dataGenerator = dataGenerator;
     }
@@ -44,15 +42,11 @@ public class BufferedFileWriter<T extends Map<String, Object>> implements FileWr
         logger.info("Writing data...");
         try (BufferedWriter fileWriter = new BufferedWriter(new FileWriter(this.fileName))) {
 
-            // WIP
-//            Country testCountry = new Country();
-//
-//            Field[] fields = testCountry.getClass().getDeclaredFields();
-//
-//            for (Field field : fields) {
-//                System.out.println(field.getName());
-//            }
-            for (Object value : dataObject.values()) {
+            ObjectSerializer<T> objectSerializer = new ObjectSerializer<>();
+            List<Object> dataObjectValues = objectSerializer.serialize(dataObject);
+
+            // Even integer values are saved as Strings so leaving that logic as it is
+            for (Object value : dataObjectValues) {
                 if (value instanceof Integer) {
                     fileWriter.write(String.valueOf((Integer) value));
                 } else {
@@ -64,8 +58,9 @@ public class BufferedFileWriter<T extends Map<String, Object>> implements FileWr
 //            fileWriter.write(country.id + "," + country.country + "," + country.population + "," + country.capital + "," + country.biggestStreet + "\n");
             logger.info("Data was written successfully!");
         } catch (IOException e) {
-            logger.error("Error while writing data.");
-            e.printStackTrace();
+            logger.error("IOException while writing data.", e);
+        } catch (IllegalAccessException e) {
+            logger.error("IllegalAccessException while writing data.", e);
         }
     }
 }

@@ -13,7 +13,7 @@ import java.util.Random;
  * Things to change:
  * 1. create interface and class based on it
  */
-public class BasicDataGenerator implements DataGeneratorService, DateService {
+public class BasicDataGeneratorService implements DataGeneratorService, DateService {
     protected Logger log = LoggerFactory.getLogger(getClass());
 
     public int generateInt() {

@@ -5,7 +5,7 @@ import models.Country;
 
 import java.util.ArrayList;
 
-public class CountryParser implements TextParserService<Country> {
+public class CountryParserService implements TextParserService<Country> {
     public ArrayList<Country> parse(ArrayList<String> list) {
         ArrayList<Country> countryList = new ArrayList<>();
 

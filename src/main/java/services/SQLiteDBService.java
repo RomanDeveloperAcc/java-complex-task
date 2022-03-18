@@ -28,7 +28,7 @@ public class SQLiteDBService implements DBService<Country> {
     public static final String ANSI_GREEN = "\u001B[32m";
     public static final String ANSI_RESET = "\u001B[0m";
 
-    public static final DateService dateGenerator = new BasicDataGenerator();
+    public static final DateService dateGenerator = new BasicDataGeneratorService();
 
     public void createTable() {
         System.out.println(ANSI_BLUE + dateGenerator.getCurrentDate() + " - Creating table..." + ANSI_RESET);
