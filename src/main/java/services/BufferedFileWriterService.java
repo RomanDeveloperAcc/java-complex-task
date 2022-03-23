@@ -18,7 +18,7 @@ public class BufferedFileWriterService<T> implements FileWriterService<T> {
 
     public BufferedFileWriterService() {
         this.fileName = "test.txt";
-        dataGenerator = new BasicDataGeneratorService();
+        this.dataGenerator = new BasicDataGeneratorService();
     }
 
     public BufferedFileWriterService(String fileName) {
@@ -26,7 +26,7 @@ public class BufferedFileWriterService<T> implements FileWriterService<T> {
         this.dataGenerator = new BasicDataGeneratorService();
     }
 
-    public BufferedFileWriterService(String fileName, BasicDataGeneratorService dataGenerator) {
+    public BufferedFileWriterService(String fileName, DataGeneratorService dataGenerator) {
         this.fileName = fileName;
         this.dataGenerator = dataGenerator;
     }
@@ -49,10 +49,8 @@ public class BufferedFileWriterService<T> implements FileWriterService<T> {
             }
             fileWriter.write("\n");
             logger.info("Data was written successfully!");
-        } catch (IOException e) {
-            logger.error("IOException while writing data.", e);
-        } catch (IllegalAccessException e) {
-            logger.error("IllegalAccessException while writing data.", e);
+        } catch (Exception e) {
+            logger.error("Error occurred while writing data.", e);
         }
     }
 }

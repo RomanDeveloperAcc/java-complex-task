@@ -39,7 +39,7 @@ public class BufferedFileReaderService implements FileReaderService {
                 dataRows.add(line);
             }
             logger.info("Data was successfully read!");
-        } catch (IOException e) {
+        } catch (Exception e) {
             logger.error("Error while reading data.", e);
         }
 
