@@ -14,8 +14,6 @@ public class ObjectSerializer<T> implements Serializer<T> {
 
         for (Field field : fields) {
             field.setAccessible(true);
-//            System.out.println(field.getName());
-//            System.out.println(field.get(object));
             testList.add(field.get(object));
         }
 

@@ -17,17 +17,11 @@ public class BasicDataGeneratorService implements DataGeneratorService, DateServ
     protected Logger log = LoggerFactory.getLogger(getClass());
 
     public int generateInt() {
-//        System.out.println("Generating integer value...");
-//        log.info("Generating int...");
         int randomInt = (int) (Math.random() * 100);
-//        System.out.println("Integer value was successfully generated!");
-//        log.info("Generating int...COMPLETE");
         return randomInt;
     }
 
     public String generateString() {
-//        System.out.println("Generating string value...");
-        log.info("Generating string...");
         int leftLimit = 97; // letter 'a'
         int rightLimit = 122; // letter 'z'
         int targetStringLength = 10;
@@ -37,9 +31,6 @@ public class BasicDataGeneratorService implements DataGeneratorService, DateServ
                 .limit(targetStringLength)
                 .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append) // rozberis
                 .toString();
-
-//        System.out.println("String value was successfully generated!");
-        log.info("Generating string...COMPLETE");
 
         return generatedString;
     }

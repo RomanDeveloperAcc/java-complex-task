@@ -10,13 +10,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
-/**
- * Things to change:
- * 1. fileName - final
- * 2. more constructors with extended functionality (fileName, dataGeneratorService) ...
- * 3. separate generation logic from `writeData` method
- * 4. would be good to create interface and class based on it
- */
 public class BufferedFileWriterService<T> implements FileWriterService<T> {
     private final String fileName;
     private final DataGeneratorService dataGenerator;
@@ -55,7 +48,6 @@ public class BufferedFileWriterService<T> implements FileWriterService<T> {
                 fileWriter.write(",");
             }
             fileWriter.write("\n");
-//            fileWriter.write(country.id + "," + country.country + "," + country.population + "," + country.capital + "," + country.biggestStreet + "\n");
             logger.info("Data was written successfully!");
         } catch (IOException e) {
             logger.error("IOException while writing data.", e);

@@ -10,12 +10,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-/**
- * Things to change:
- * 1. filename - final
- * 2. would be good to create interface and class based on it
- * 3. more constructors with extended functionality (fileName, dbService) ...
- */
 public class BufferedFileReaderService implements FileReaderService {
     private final String fileName;
     private final DBService dbService;
@@ -42,17 +36,7 @@ public class BufferedFileReaderService implements FileReaderService {
         try (BufferedReader fileReader = new BufferedReader(new FileReader(this.fileName))) {
             String line;
             while ((line = fileReader.readLine()) != null) {
-//                String[] data = line.split(",");
-//                int id = Integer.parseInt(data[0]);
-//                String country = data[1];
-//                int population = Integer.parseInt(data[2]);
-//                String capital = data[3];
-//                String biggestStreet = data[4];
                 dataRows.add(line);
-
-
-//                System.out.println(id + " : " + country + " : " + population + " : " + capital + " : " + biggestStreet);
-//                dbService.insertIntoTable(id, country, population, capital, biggestStreet);
             }
             logger.info("Data was successfully read!");
         } catch (IOException e) {
