@@ -28,7 +28,7 @@ public class BasicDataGeneratorServiceTest {
         String testValue = basicDataGenerator.generateString(targetStringLength);
 
         // assert
-        assertEquals(testValue.length(), 10);
+        assertEquals(testValue.length(), targetStringLength);
     }
 
     @Test

@@ -28,7 +28,7 @@ public class BasicDataGeneratorService implements DataGeneratorService, DateServ
 
         String generatedString = random.ints(leftLimit, rightLimit + 1)
                 .limit(targetStringLength)
-                .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append) // rozberis
+                .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
                 .toString();
 
         return generatedString;
