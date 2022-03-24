@@ -21,10 +21,9 @@ public class BasicDataGeneratorService implements DataGeneratorService, DateServ
         return randomInt;
     }
 
-    public String generateString() {
+    public String generateString(int targetStringLength) {
         int leftLimit = 97; // letter 'a'
         int rightLimit = 122; // letter 'z'
-        int targetStringLength = 10;
         Random random = new Random();
 
         String generatedString = random.ints(leftLimit, rightLimit + 1)

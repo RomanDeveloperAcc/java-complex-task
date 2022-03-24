@@ -22,9 +22,10 @@ public class BasicDataGeneratorServiceTest {
     public void generateString() {
         // arrange
         BasicDataGeneratorService basicDataGenerator = new BasicDataGeneratorService();
+        int targetStringLength = 10;
 
         // act
-        String testValue = basicDataGenerator.generateString();
+        String testValue = basicDataGenerator.generateString(targetStringLength);
 
         // assert
         assertEquals(testValue.length(), 10);
